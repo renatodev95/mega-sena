@@ -10,10 +10,13 @@ mat-toolbar {
 .example-form-field {
   width: 100px;
   margin-left: 30px;
+  height: auto;
 }
 
 .card-content {
   margin: 1em auto;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -44,4 +47,9 @@ mat-toolbar {
 
 .lista {
   padding-top: 2em;
+}
+
+.enunciado {
+  height: auto;
+  font-size: 20px;
 }
