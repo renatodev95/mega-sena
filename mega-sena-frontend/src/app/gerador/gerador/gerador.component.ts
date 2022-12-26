@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeradorComponent implements OnInit {
 
+  value = 'Clear me';
+  lista: Number[] = []
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  sortear() {
+    this.lista = []
+    for (let i=0; i<6;i++) {
+      this.lista.push(Math.floor(Math.random() * 60) + 1);
+    }
+  }
 }

@@ -1,1 +1,22 @@
-<p>gerador works!</p>
+<mat-card>
+  <mat-toolbar color="primary">GERADOR</mat-toolbar>
+
+  <mat-card-content class="card-content">
+    <span body-2>Quantos números deseja sortear?</span>
+    <mat-form-field class="example-form-field">
+      <mat-label>Clearable input</mat-label>
+      <input matInput type="text" [(ngModel)]="value">
+      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card-content>
+
+  <div align="center">
+    <button mat-raised-button color="primary" (click)="sortear()">SORTEAR</button>
+  </div>
+
+  <ul *ngIf="lista.length > 0" align="center" class="lista">
+    <span class="zSMazd UHlKbe" style="color:#ffffff;background-color:#3F51B5" *ngFor="let item of lista">{{item}}</span>
+  </ul>
+</mat-card>
