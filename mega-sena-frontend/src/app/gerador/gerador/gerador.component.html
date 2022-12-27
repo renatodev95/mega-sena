@@ -5,8 +5,8 @@
     <span class="enunciado">Quantos números deseja sortear?</span>
 
     <mat-form-field class="example-form-field">
-      <input matInput type="text" [(ngModel)]="value">
-      <button matSuffix mat-icon-button (click)="value=''">
+      <input matInput type="text" [(ngModel)]="countNumbers">
+      <button matSuffix mat-icon-button (click)="countNumbers=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
@@ -20,9 +20,11 @@
     (click)="sortear()">SORTEAR</button>
   </div>
 
-  <ul *ngIf="lista.length > 0" align="center" class="lista">
-    <span class="zSMazd UHlKbe"
-          style="color:#ffffff;background-color:#3F51B5"
-          *ngFor="let item of lista">{{item}}</span>
-  </ul>
+  <div *ngIf="lista$ | async as numberList">
+    <ul align="center" class="lista">
+      <span class="numeros-sorteados"
+            style="color:#ffffff;background-color:#3F51B5"
+            *ngFor="let item of numberList">{{item}}</span>
+    </ul>
+  </div>
 </mat-card>

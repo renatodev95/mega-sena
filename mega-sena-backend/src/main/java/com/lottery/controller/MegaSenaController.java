@@ -14,8 +14,8 @@ public class MegaSenaController {
     
     private final MegaSenaService megaSenaService;
     
-    @GetMapping
-    public ResponseEntity<List<Integer>> getNumbers(@RequestBody Integer countNumbers) {
+    @GetMapping(value = "/{countNumbers}")
+    public ResponseEntity<List<Integer>> getNumbers(@PathVariable Integer countNumbers) {
         return ResponseEntity.ok().body(megaSenaService.getGeneratedNumbers(countNumbers));
     }
 }

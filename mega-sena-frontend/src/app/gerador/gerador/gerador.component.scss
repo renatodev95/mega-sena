@@ -24,7 +24,7 @@ mat-toolbar {
   justify-content: center;
 }
 
-.zSMazd.UHlKbe {
+.numeros-sorteados {
   margin: 0 8px 0 0;
   letter-spacing: 2px;
   padding: 0 0 0 2px;
@@ -32,9 +32,6 @@ mat-toolbar {
   height: 55px;
   font-size: 30px;
   line-height: 55px;
-}
-
-.zSMazd {
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -45,6 +42,7 @@ mat-toolbar {
   font-weight: 300;
 }
 
+
 .lista {
   padding-top: 2em;
 }
@@ -52,4 +50,12 @@ mat-toolbar {
 .enunciado {
   height: auto;
   font-size: 20px;
+}
+
+.loading-spinner {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

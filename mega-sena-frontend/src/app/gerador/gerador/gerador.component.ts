@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { GeradorService } from '../services/gerador.service';
 
 @Component({
@@ -8,14 +9,14 @@ import { GeradorService } from '../services/gerador.service';
 })
 export class GeradorComponent implements OnInit {
 
-  value = '';
-  lista: Number[] = [];
+  countNumbers = '';
+  lista$: Observable<Number[]> = of();
 
   constructor(private service: GeradorService) {}
 
   ngOnInit(): void {}
 
   sortear() {
-    this.lista = this.service.getRandomNumbers(this.value);
+    this.lista$ = this.service.getRandomNumbers(this.countNumbers);
   }
 }
