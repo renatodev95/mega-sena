@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,10 @@ export class GeradorService {
   constructor(private httpClient: HttpClient) { }
 
   getRandomNumbers(countNumbers: string) {
-    return of([1,2,3,4,5,6]);
-    // return this.httpClient.get<Number[]>(`${this.API}/${countNumbers}`)
-    //   .pipe(
-    //     take(1),
-    //     tap(numbers => console.log(numbers))
-    //   )
+    return this.httpClient.get<Number[]>(`${this.API}/${countNumbers}`)
+      .pipe(
+        take(1),
+        tap(numbers => console.log(numbers))
+      )
   }
 }
