@@ -13,12 +13,12 @@ public class MegaSenaService {
     private final Random random = new Random();
 
     // método que retornará os números sorteados
-    public List<Integer> getGeneratedNumbers(Integer countNumbers) {
+    public List<String> getGeneratedNumbers(Integer countNumbers) {
         return generateNumbers(countNumbers);
     }
 
     // gerando a lista com os numeros aleatórios
-    private List<Integer> generateNumbers(Integer countNumbers) {
+    private List<String> generateNumbers(Integer countNumbers) {
         List<Integer> numbersList = new ArrayList<>();
         
         while (numbersList.size() < countNumbers) {
@@ -29,7 +29,14 @@ public class MegaSenaService {
         }
 
         orderGeneratedNumbers(numbersList);
-        return numbersList;
+        
+        return castListNumberToStrings(numbersList);
+    }
+
+    private List<String> castListNumberToStrings(List<Integer> numbersList) {
+        List<String> stringList = numbersList.stream().map(String::valueOf).toList();
+        stringList = stringList.stream().map(n -> Integer.parseInt(n) < 10 ? "0" + n : n).toList();
+        return stringList;
     }
 
     private void orderGeneratedNumbers(List<Integer> numbersList) {

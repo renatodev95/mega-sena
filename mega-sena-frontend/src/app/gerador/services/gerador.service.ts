@@ -8,12 +8,13 @@ import { take, tap } from 'rxjs/operators';
 })
 export class GeradorService {
 
-  private readonly API = 'localhost:8080/api/gerador';
+  private readonly API = 'api/gerador';
 
   constructor(private httpClient: HttpClient) { }
 
   getRandomNumbers(countNumbers: string) {
-    return this.httpClient.get<Number[]>(`${this.API}/${countNumbers}`)
+    console.log(`${this.API}/${countNumbers}`)
+    return this.httpClient.get<String[]>(`${this.API}/${countNumbers}`)
       .pipe(
         take(1),
         tap(numbers => console.log(numbers))

@@ -14,7 +14,7 @@ import { ErrorDialogComponent } from './../../shared/components/error-dialog/err
 export class GeradorComponent implements OnInit {
 
   countNumbers = '';
-  lista$: Observable<Number[]> = of();
+  lista$: Observable<String[]> = of();
 
   constructor(private service: GeradorService, public dialog: MatDialog) {}
 
