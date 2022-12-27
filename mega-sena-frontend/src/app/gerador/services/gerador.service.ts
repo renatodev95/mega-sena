@@ -8,7 +8,7 @@ import { take, tap } from 'rxjs/operators';
 })
 export class GeradorService {
 
-  private readonly API = 'localhost:8080';
+  private readonly API = 'localhost:8080/api/gerador';
 
   constructor(private httpClient: HttpClient) { }
 
