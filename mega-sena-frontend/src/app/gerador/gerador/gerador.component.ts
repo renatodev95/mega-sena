@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -13,7 +14,12 @@ import { ErrorDialogComponent } from './../../shared/components/error-dialog/err
 })
 export class GeradorComponent implements OnInit {
 
-  countNumbers = '';
+  countNumbers = new FormControl('', [
+    Validators.required,
+    Validators.minLength(1),
+    Validators.maxLength(2),
+    Validators.min(6),
+    Validators.max(15)]);
   lista$: Observable<String[]> = of();
 
   constructor(private service: GeradorService, public dialog: MatDialog) {}
@@ -21,10 +27,9 @@ export class GeradorComponent implements OnInit {
   ngOnInit(): void {}
 
   sortear() {
-    this.lista$ = this.service.getRandomNumbers(this.countNumbers)
+    this.lista$ = this.service.getRandomNumbers(this.countNumbers.value)
       .pipe(
         catchError(error => {
-          // console.log(error);
           this.onError('Ocorreu um erro ao carregar os números.');
           return of([]);
         })
@@ -36,4 +41,17 @@ export class GeradorComponent implements OnInit {
       data: errorMsg
     });
   }
+
+  getErrorMessage() {
+    if (this.countNumbers.hasError('required')) {
+      return 'Campo obrigatório.';
+    }
+
+    return this.countNumbers.hasError('min') || this.countNumbers.hasError('max') ? 'É necessário informar um número entre 6 e 15.' : '';
+  }
+
+  limpar() {
+    this.countNumbers.setValue('');
+  }
+
 }

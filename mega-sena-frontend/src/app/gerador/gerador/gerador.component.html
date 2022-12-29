@@ -5,12 +5,12 @@
     <span class="enunciado">Quantos números deseja sortear? (Entre 6 e 15)</span>
 
     <mat-form-field class="example-form-field">
-      <input matInput type="number" [(ngModel)]="countNumbers">
-      <button matSuffix mat-icon-button (click)="countNumbers=''">
+      <input matInput [formControl]="countNumbers" required>
+      <button matSuffix mat-icon-button (click)="limpar()">
         <mat-icon>close</mat-icon>
       </button>
+      <mat-error *ngIf="countNumbers.invalid">{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
-
   </mat-card-content>
 
   <div align="center">

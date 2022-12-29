@@ -16,8 +16,7 @@ export class GeradorService {
     console.log(`${this.API}/${countNumbers}`)
     return this.httpClient.get<String[]>(`${this.API}/${countNumbers}`)
       .pipe(
-        take(1),
-        tap(numbers => console.log(numbers))
+        take(1)
       )
   }
 }
